@@ -1,0 +1,336 @@
+
+/*Estiliza por padrão tudo da página assim */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*Estiliza o corpo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /*min-height: 100vh = centraliza o corpo no centro da página */
+    background: url('background.jpg') no-repeat; /* coloca uma imagem de fundo na tela e impede a repetição da imagem */
+    background-size: cover; /* faz a imagem cobrir completamente o elemento pai */
+    background-position: center; /* centraliza a imagem no elemento pai */
+}
+
+/*Estiliza o header = cabeçãlho da página */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+/*Estila a classe logo */
+.logo {
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+}
+
+/*Estiliza o 'a' da class navigation */
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/* Utilizado para selecionar e estilizar o conteúdo que é gerado automaticamente e inserido após o conteúdo do elemento alvo */
+.navigation a::after{
+    /*content vazio pois vai ser o estilo aplicado com o after */
+    content: '';
+    /* é usada para posicionar um elemento de forma absoluta em relação ao seu contêiner pai mais próximo que possui uma posição diferente de (padrao) */
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    /* move o elemento 6 pixels para cima a partir do lado inferior do seu contêiner pai */
+    bottom: -6px;
+    height: 3px;
+    left: 0;
+    /* você está especificando que o elemento deve ser achatado horizontalmente até ficar invisível (largura zero). */
+    transform: scaleX(0);
+    /*modificação aplicada do lado direito do elemento*/
+    transform-origin: right;
+    /*indica que a propriedade transform tem uma duração de .5s, se o elemente tiver um 'hover' vai ser transmitido por meio segundo */
+    transition: transform .5s;
+}
+
+/*Aplica ao focar e depois de after no elemento navigation */
+.navigation a:hover::after {
+    /* 'transform-origin' =  aceita diferentes valores,  e "left" neste contexto indica que as transformações serão aplicadas em torno  do lado 
+        esquerdo do elemento. */
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+/*Estiliza o botão de login */
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    /*fundo transparente */
+    background: transparent;
+    /*borda de 2px, solid e cor branca */
+    border: 2px solid #fff;
+    /*remove a borda de contorno quando está focado */
+    outline: none;
+    /*arredondamento do bloco */
+    border-radius: 6px;
+    /*tipo de cursor */
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    /*margin-left = o quanto ela é afastada da margem */
+    margin-left: 40px;
+    /*transição para aparecer os efeitos quando focado */
+    transition: .5s;
+}
+
+/*Modifica o css quando focado */
+.navigation .btnLogin-popup:hover{
+    background: #fff;
+    color: #162938;
+}
+
+/*Estilizar a caixa de login - wrapper */
+
+.wrapper {
+    /*posição relativa*/
+    position: relative;
+    /*largura*/
+    width: 400px;
+    /*altura*/
+    height: 440px;
+    /*fundo transparente*/
+    background: transparent;
+    /*borda */
+    border: 2px solid rgba(255, 255, 255, .5);
+    /*arredondamento da borda */
+    border-radius: 20px;
+    /*coloca um blur no background da caixa */
+    backdrop-filter: blur(20px);
+    /*sombra da caixa */
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    /*tipo de display */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*overflow: hidden = esconde o bloco */
+    overflow: hidden;
+    /*deixa com escala de 0, não mostra a classe na tela*/
+    transform: scale(0);
+    /*colocamos uma transição para quando a classe active for clicada vai ocorrer esta transição */
+    transition: transform .5s ease height .2s ease;
+}
+
+/*Quando o wrapper estiver com esta classe, faça isso... */
+.wrapper.active-popup {
+    /*mostra tudo de novo */
+    transform: scale(1);
+}
+
+/*Estiliza quando a classe wrapper active é ativa */
+.wrapper.active {
+    height: 520px;
+}
+
+/*Estilizando a form da caixa de login */
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+/*Estilizando o form-box de login quando estiver com a classe wrapper */
+ .wrapper .form-box.login { 
+    /*Para tirar a classe da tela */
+    /* display: none; */
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+/*Quando o wrapper estiver com a classe active, a caixa de login vai fazer isso... */
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+
+.wrapper .form-box.register {
+    /*a posição passa a ser absoluta */
+    position: absolute;
+    /*manda a caixa para o lado X da tela em 400px */
+    transform: translateX(400px);
+    /*desabilita a transição dos outros elementos */
+    transition: none;
+}
+
+/*Estilo para o wrapper quando estiver com a classe active */
+.wrapper.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+/*Estilizando o icone-close */
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    /* Essa propriedade é comumente usada quando você tem elementos sobrepostos e deseja controlar qual deles deve aparecer acima dos outros. */
+    z-index: 1;
+}
+
+/*Estilizando o H2 da caixa */
+.form-box h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+
+/*Estilizando os inputs da caixa */
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
+/*Estilizando todas label que tem dentro da caixa input*/
+
+.input-box label {
+    /*posição absoluta na tela */
+    position: absolute;
+    /*fica centralizado no meio da página */
+    top: 50%;
+    /*para a esquerda*/
+    left: 5px;
+    /*faz a label ir -50% para o eixo Y */
+    transform: translateY(-50%);
+    /*tamanho fonte */
+    font-size: 1em;
+    /*cor */
+    color: #162938;
+    /*peso da fonte */
+    font-weight: 500;
+    /*não recebera eventos do mouse, não será clicavel */
+    pointer-events: none;
+    /* transição de meio segundo quando ouver uma validação*/
+    transition: .5s;
+}
+
+/*Estilizando o input da caixa quando focado na label, e quando a label for valida */
+.input-box input:focus~label, .input-box input:valid~label {
+    top: -5px;
+}
+
+/*Estilizando o input */
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+/*Estilizando o icone da caixa */
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+}
+
+/*Estilizando a classe remember */
+
+.remember-forgot {
+    font-size: .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Estilizando o input da classe remember-forgot */
+
+.remember-forgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+/*estilizando o 'a' do remember-forgot */
+.remember-forgot a {
+    color: #162938;
+    text-decoration: none;
+}
+
+/*estilizando o 'a' quando clicado da classe 'remember-forgot'*/
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+/*Estilizando o botão */
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+}
+
+/*Estilizando a classe de login e register */
+
+.login-register {
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+/*estilizando o 'a' dentro do 'p' dentro da classe 'login-register' */
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/*estilizando o 'a' dentro do 'p' quando clicado dentro da classe 'login-register' */
+.login-register p a:hover {
+    text-decoration: underline;
+}

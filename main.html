@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website login page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <!--HEADER = Para criar um cabeçalho na sua página-->
+    <header>
+        <!--H2 - Para criar um subtitulo no meu cabeçalho-->
+        <h2 class="logo">Logo</h2>
+
+        <!--nav = elemento que representa uma seção de uma pagina que aponta para outras páginas ou outras areas da página-->
+        <nav class="navigation">
+            <!--<a> = é usada para vincular uma página a outra, utilizando o atributo "href".-->
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Services</a>
+
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <!--Div para criar o bloco de login-->
+    <div class="wrapper">
+
+        <!--span com um icone de fechar-->
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+        <!--div para a forma do box-->
+        <div class="form-box login">
+
+            <h2>Login</h2>
+
+            <!--forma para criar os botões e input-->
+            <form action="#">
+
+                <!--div para criar uma caixa de input-->
+                <div class="input-box">
+                    <!--span = linha linha que não representa nada, mas aqui colocamos o icone de email-->
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <!--input = para criar um input do tipo 'email' obrigátorio-->
+                    <input type="email" required>
+
+                    <!--rótulo para o titulo do input-->
+                    <label>Email</label>
+                </div>
+
+                <!--div para criar uma caixa de input - mesmo caso que acima-->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+
+                <!--div para lembrar usuario e caso esqueça senha-->
+                <div class="remember-forgot">
+
+                    <!--rótulo com um input do tipo checkbox com nome 'Remember-me'-->
+                    <label> <input type="checkbox"> Remember-me </label>
+
+                    <!--a para redirecionar caso esqueça a senha e clique aqui-->
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <!--botão do tipo submit para fazer login-->
+                <button type="submit" class="btn">Login</button>
+
+                <!--classe para se registrar-->
+                <div class="login-register">
+
+                    <!-- paragrafo com um 'a' e classe para se registrar-->
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a> </p>
+                </div>
+            </form>
+        </div>
+
+
+        <!--Div para criar uma caixa para o usuario se registrar-->
+        <div class="form-box register">
+
+            <h2>Registration</h2>
+
+            <!--forma para criar os botões e input-->
+            <form action="#">
+
+                <!--div para criar uma caixa de input-->
+                <div class="input-box">
+                    <!--span = linha linha que não representa nada, mas aqui colocamos o icone de email-->
+                    <span class="icon"> <ion-icon name="person"></ion-icon> </span>
+                    <!--input = para criar um input do tipo 'email' obrigátorio-->
+                    <input type="text" required>
+
+                    <!--rótulo para o titulo do input-->
+                    <label>Username</label>
+                </div>
+
+                <div class="input-box">
+                    <!--span = linha linha que não representa nada, mas aqui colocamos o icone de email-->
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <!--input = para criar um input do tipo 'email' obrigátorio-->
+                    <input type="email" required>
+
+                    <!--rótulo para o titulo do input-->
+                    <label>Email</label>
+                </div>
+
+                <!--div para criar uma caixa de input - mesmo caso que acima-->
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+
+                <!--div para lembrar usuario e caso esqueça senha-->
+                <div class="remember-forgot">
+
+                    <!--rótulo com um input do tipo checkbox com nome 'Remember-me'-->
+                    <label> <input type="checkbox"> I agree to the terms & conditions </label>
+                </div>
+
+                <!--botão do tipo submit para fazer login-->
+                <button type="submit" class="btn">Register</button>
+
+                <!--classe para se registrar-->
+                <div class="login-register">
+
+                    <!-- paragrafo com um 'a' e classe para se registrar-->
+                    <p>Already have an account? <a href="#" class="login-link">Login</a> </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
